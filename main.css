@@ -1,0 +1,795 @@
+/* 네오 둥근모 폰트 */
+@font-face {
+	font-family: 'NeoDunggeunmoPro-Regular';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	user-select: none;
+	overflow: hidden;
+	margin: 0;
+}
+
+#three-canvas {
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+
+html,
+body, div {
+	cursor: url("images/pointer1.png"), auto;
+}
+
+html:active,
+body:active,
+a:active {
+	cursor: url("images/pointer1.png"), auto;
+}
+
+a:hover {
+	cursor: url("images/pointer2.png"), auto;
+}
+
+#ui {
+	position: fixed;
+	z-index: 2;
+	left: 35px;
+	bottom: 30px;
+	width: 80px;
+	height: 80px;
+}
+
+#logo {
+	position: fixed;
+	z-index: 2;
+	left: 45px;
+	top: 30px;
+	width: 180px;
+	height: 50px;
+}
+
+#game {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	bottom: -5px;
+	text-align: center;
+}
+
+#game img {
+	width: 700px;
+}
+
+#phone {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	bottom: -5px;
+	left: -600px;
+	pointer-events: none;
+	transition: transform 0.5s ease;
+}
+
+#phone img {
+	width: 40%;
+}
+
+#bgm {
+	position: fixed;
+	z-index: 1;
+	top: 10px;
+	right: 10px;
+}
+
+#bgm audio {
+	width: 150px;
+	height: 20px;
+}
+
+.menu:hover {
+	cursor: url("images/pointer2.png"), auto;
+}
+
+#menu1,
+#menu2,
+#menu3,
+#menu4 {
+	transition: transform 0.5s ease;
+}
+
+#menu4.clicked {
+	transform: translateY(-195px);
+}
+
+#menu2.clicked {
+	transform: translateY(-130px);
+}
+
+#menu3.clicked {
+	transform: translateY(-65px);
+}
+
+#modal {
+	display: none;
+	position: fixed;
+	z-index: 3;
+	top: 30px;
+	left: 36%;
+}
+
+#modal2 {
+	z-index: 3;
+	display: none;
+	position: fixed;
+	padding-top: 600px;
+	padding-left: 18%;
+}
+
+#modal3 {
+	z-index: 3;
+	display: none;
+	position: fixed;
+	top: 100px;
+	left: 15%;
+}
+
+#memo {
+	background: linear-gradient(to bottom, #F45B80 4.5%, #F5F0E4 4.5%);
+	width: 1200px;
+	height: 600px;
+	border-radius: 5px;
+	border-left: solid 3px #F45B80;
+	border-right: solid 3px #F45B80;
+	border-bottom: solid 3px #F45B80;
+	margin: 0 auto;
+	margin-top: 50px;
+	padding-top: 70px;
+	text-align: center;
+	font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+#memo2 {
+	border-radius: 5px;
+	background: #6A8B65;
+	width: 1100px;
+	height: 470px;
+	margin: 20px auto 0 auto;
+	text-align: center;
+	font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+#post1 {
+	vertical-align: top;
+	position: relative;
+	line-height: 2;
+	border-radius: 5px;
+	border: solid 1px black;
+	background-color: #fff281;
+	width: 250px;
+	height: 200px;
+	top: 20px;
+	padding: 20px 30px;
+	text-align: left;
+	display: inline-block;
+}
+
+#post2 {
+	vertical-align: top;
+	position: relative;
+	line-height: 2;
+	border-radius: 5px;
+	border: solid 1px black;
+	background-color: #D5F4AE;
+	width: 250px;
+	height: 150px;
+	top: 20px;
+	padding: 20px 30px;
+	margin-left: 30px;
+	text-align: left;
+	display: inline-block;
+}
+#post3 {
+	vertical-align: top;
+	position: relative;
+	line-height: 2;
+	border-radius: 5px;
+	border: solid 1px black;
+	background-color: #FFD8D8;
+	width: 250px;
+	height: 270px;
+	top: 20px;
+	padding: 20px 30px;
+	margin-left: 30px;
+	text-align: left;
+	display: inline-block;
+}
+
+#npcname {
+	font-family: 'NeoDunggeunmoPro-Regular';
+	background-color: #F45B80;
+	font-size: 1.3rem;
+	position: absolute;
+	color: white;
+	border-radius: 50px;
+	width: 150px;
+	padding: 20px;
+	margin-top: -30px;
+	margin-left: 30px;
+	text-align: center;
+	z-index: 3;
+}
+
+#npctalk {
+	position: fixed;
+	margin: 0 auto;
+	background-color: white;
+	border-radius: 30px;
+	line-height: 2;
+	padding: 50px 50px 30px 50px;
+	font-family: 'NeoDunggeunmoPro-Regular';
+	width: 1000px;
+}
+
+#backbtn {
+	display: inline-block;
+	width: 100px;
+	color: white;
+	padding: 5px 10px;
+	background-color: #bbbbbb;
+	text-align: center;
+	border-radius: 50px;
+	vertical-align: bottom;
+}
+
+#cheer {
+	display: inline-block;
+	width: 100px;
+	color: white;
+	padding: 5px 10px;
+	margin-left: 30px;
+	background-color: #bbbbbb;
+	text-align: center;
+	border-radius: 50px;
+	vertical-align: bottom;
+}
+
+#backbtn:hover, #cheer:hover {
+	background-color: #97CD61;
+}
+
+#intro {
+	background: linear-gradient(to bottom, #F45B80 6%, #F5F0E4 6%);
+	width: 500px;
+	height: 500px;
+	border-radius: 5px;
+	border-left: solid 3px #F45B80;
+	border-right: solid 3px #F45B80;
+	border-bottom: solid 3px #F45B80;
+	margin: 0 auto;
+	margin-top: 150px;
+	padding-top: 70px;
+	text-align: center;
+	font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+.title {
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 13pt;
+}
+
+#btns {
+	position: absolute;
+	text-align: center;
+	margin-top: -68px;
+	margin-left: 20px;
+	z-index: 2;
+}
+
+#btns2 {
+	position: absolute;
+	text-align: center;
+	margin-top: 51px;
+	margin-left: 710px;
+	z-index: 2;
+}
+
+#btn1 {
+	width: 20px;
+	height: 20px;
+	border: solid 1px white;
+	border-radius: 1px;
+	margin-top: 3.5px;
+	margin-left: 390px;
+	text-align: center;
+	display: inline-block;
+	/* vertical-align: bottom; */
+}
+
+#btn2 {
+	width: 20px;
+	height: 20px;
+	border: solid 1px white;
+	border-radius: 1px;
+	margin-left: 5px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: bottom;
+}
+
+#btn3 {
+	width: 20px;
+	height: 20px;
+	background-color: #F54953;
+	border: solid 1px white;
+	border-radius: 1px;
+	margin-left: 5px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: bottom;
+}
+
+#btns img {
+	width: 12px;
+	padding-bottom: 1.5px;
+	margin-top: 4.5px;
+}
+
+#btns2 img {
+	width: 12px;
+	padding-bottom: 1.5px;
+	margin-top: 4.5px;
+}
+
+button {
+	background-color: #F5F0E4;
+	border-radius: 5px;
+	padding: 10px 40px;
+	font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+button:hover {
+	background-color: #F45B80;
+	color: white;
+	border: solid 2px #F45B80;
+}
+
+#phone2 {
+	display: inline-block;
+	border: solid 2px black;
+	width: 100px;
+	height: 100px;
+	margin: 0 15px;
+	background-color: white;
+	border-radius: 100%;
+	vertical-align: bottom;
+}
+
+#phone2:hover {
+	/* background-color: #F45B80; */
+	border: solid 2px #F45B80;
+}
+
+#phone2 img {
+	margin-top: 20px;
+}
+
+#mail {
+	display: inline-block;
+	border: solid 2px black;
+	width: 100px;
+	height: 100px;
+	margin: 0 15px;
+	background-color: white;
+	border-radius: 100%;
+	vertical-align: bottom;
+}
+
+#mail:hover {
+	/* background-color: #F45B80; */
+	border: solid 2px #F45B80;
+}
+
+#mail img {
+	margin-top: 30px;
+}
+
+#updateButton {
+	font-size: 13pt;
+}
+
+#name {
+	margin-top: 20px;
+	padding: 30px 0 0px 60px;
+	text-align: left;
+	font-size: 13pt;
+}
+
+input {
+	font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+#pageload {
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #F45B80;
+	z-index: 3;
+}
+
+#pageload img {
+	margin-top: 130px;
+}
+
+#page1 {
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+@keyframes blink-effect {
+	50% {
+		opacity: 0;
+	}
+}
+
+.blink {
+	animation: blink-effect 1.5s ease-in-out infinite;
+	text-align: center;
+	margin-top: 26%;
+	font-size: 20pt;
+	text-shadow: 1px 1px 2px #424242;
+	color: #ffffff;
+	font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+#page3 {
+	display: none;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+#info {
+	border-radius: 25px;
+	color: #726f69;
+	padding-top: 50px;
+	margin-top: 200px;
+	margin-left: 650px;
+	background-color: white;
+	width: 450px;
+	height: 500px;
+	text-align: center;
+	line-height: 2;
+	font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+#biglogo {
+	display: inline-block;
+	width: fit-content;
+	margin-top: 130px;
+	cursor: url("images/pointer2.png"), auto;
+}
+
+#startlogo {
+	display: inline-block;
+	width: fit-content;
+	margin-top: 180px;
+}
+
+#page2 {
+	display: none;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+}
+
+#page4 {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+}
+
+#girl {
+	border: solid 1px black;
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	margin: 0 10px;
+	background-color: white;
+	border-radius: 100%;
+}
+
+#girl:hover {
+	border: solid 1px #F45B80;
+	cursor: url("images/pointer2.png"), auto;
+}
+
+#girl img {
+	margin-top: 20px;
+	width: 80px;
+}
+
+#boy {
+	border: solid 1px black;
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	margin: 0 10px;
+	background-color: white;
+	border-radius: 100%;
+}
+
+#boy:hover {
+	border: solid 1px #F45B80;
+	cursor: url("images/pointer2.png"), auto;
+}
+
+#boy img {
+	margin-top: 20px;
+	width: 80px;
+}
+
+#updateButton {
+	font-size: 13pt;
+	padding: 20px 40px;
+	cursor: url("images/pointer2.png"), auto;
+}
+
+#name {
+	margin-top: 20px;
+	padding: 30px 0 0px 60px;
+	text-align: left;
+	font-size: 13pt;
+}
+
+input {
+	font-family: 'NeoDunggeunmoPro-Regular';
+	text-align: center;
+}
+
+#loading {
+	display: none;
+	position: fixed;
+	background-color: #F45B80;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+}
+
+#load {
+	margin-top: 20%;
+	text-align: center;
+}
+
+#back {
+	margin-top: 3%;
+	text-align: center;
+	color: white;
+	font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+.lds-ripple {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.lds-ripple div {
+	position: absolute;
+	border: 4px solid #ffffff;
+	opacity: 1;
+	border-radius: 50%;
+	animation: lds-ripple 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+	animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+	0% {
+		top: 36px;
+		left: 36px;
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+
+	4.9% {
+		top: 36px;
+		left: 36px;
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+
+	5% {
+		top: 36px;
+		left: 36px;
+		width: 0;
+		height: 0;
+		opacity: 1;
+	}
+
+	100% {
+		top: 0px;
+		left: 0px;
+		width: 72px;
+		height: 72px;
+		opacity: 0;
+	}
+}
+
+#guide {
+	display: none;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+}
+
+#tiptext {
+	text-align: center;
+	line-height: 1.5;
+	margin-top: 400px;
+	font-family: 'NeoDunggeunmoPro-Regular';
+	font-size: 30px;
+	color: white;
+}
+
+#okay {
+	background-color: white;
+	border-radius: 50px;
+	width: 100px;
+	padding: 15px;
+	font-family: 'NeoDunggeunmoPro-Regular';
+	text-align: center;
+	margin: 3% auto 0 auto;
+	transition: all ease 0.1s;
+}
+
+#okay:hover {
+	background-color: #F45B80;
+	color: white;
+	cursor: url("images/pointer2.png"), auto;
+}
+
+#tip2 {
+	display: none;
+	background-color: white;
+	border-radius: 50px;
+	width: 400px;
+	padding: 15px;
+	font-family: 'NeoDunggeunmoPro-Regular';
+	text-align: center;
+	margin: 200px auto 0 auto;
+}
+
+#tip2:hover {
+	background-color: #F45B80;
+	color: white;
+}
+
+.lds-ellipsis {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.lds-ellipsis div {
+	position: absolute;
+	top: 33px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: #fff;
+	animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+	left: 8px;
+	animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+	left: 8px;
+	animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+	left: 32px;
+	animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+	left: 56px;
+	animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes lds-ellipsis3 {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0);
+	}
+}
+
+@keyframes lds-ellipsis2 {
+	0% {
+		transform: translate(0, 0);
+	}
+
+	100% {
+		transform: translate(24px, 0);
+	}
+}
+
+button {
+	cursor: url("images/pointer2.png"), auto;
+}
+
+table {
+	margin: 30px auto 0 auto;
+}
+
+td {
+	padding: 0 10px;
+}
+
+#project {
+    background-color: #f45b80;
+    border: solid 1px #f45b80;
+    text-align: center;
+    margin: 40px auto;
+	height: 35px;
+	padding-top: 5px;
+    color: white;
+    width: 200px;
+    border-radius: 50px;
+    transition: all ease 0.2s;
+}
+
+#project:hover {
+    background-color: white;
+    border: solid 1px #f45b80;
+    text-align: center;
+    margin: 40px auto;
+	height: 35px;
+	padding-top: 5px;
+    color: #f45b80;
+    width: 200px;
+    border-radius: 50px;
+}
+
+#info a {
+	text-decoration: none;
+	color: white;
+}
